@@ -5,7 +5,6 @@ class Main {
     Scanner sc = new Scanner(System.in);
     int n = sc.nextInt();
     List<Integer> rope_list = new ArrayList<>();
-    int sum = 0;
     int count = 0;
     int result = 0;
     
@@ -14,7 +13,6 @@ class Main {
     }
     Collections.sort(rope_list,Collections.reverseOrder());
     for(int value : rope_list){
-      sum += value;
         count += 1;
         if(count == 1){
           result = value;
