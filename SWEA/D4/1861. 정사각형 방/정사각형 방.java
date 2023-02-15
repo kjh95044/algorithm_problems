@@ -48,7 +48,7 @@ public class Solution {
 			for (int i = 0; i < N; i++) {
 				for (int j = 0; j < N; j++) {
 					totalCnt= 0;
-					dfs(i,j,0);
+					dfs(i,j);
 					if(totalCnt>maxCnt) {
 						maxCnt = totalCnt;
 						maxRoom = data[i][j];
@@ -70,7 +70,7 @@ public class Solution {
 	static int[][] delta = new int[][] { { 0, 1 }, { 0, -1 }, { 1, 0 }, { -1, 0 } };
 	static boolean[][] visited;
 
-	private static void dfs(int x, int y, int cnt) {
+	private static void dfs(int x, int y) {
 
 		for (int i = 0; i < 4; i++) {
 			int nx = x + delta[i][0];
@@ -82,7 +82,7 @@ public class Solution {
 			
 			if(data[nx][ny] == (data[x][y] + 1)) {
 				totalCnt++;
-				dfs(nx,ny,cnt++);
+				dfs(nx,ny);
 			}
 		}
 	}
