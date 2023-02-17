@@ -8,7 +8,7 @@ public class Main {
 		int result = Integer.MAX_VALUE;
 		
 		for(int i=0; i<=N; i+=3) {
-			for(int j=0; j<=N; j+=5) {
+			for(int j=0; j<=N-i; j+=5) {
 				if(i+j == N) {
 					result = Math.min(result, i/3 + j/5);
 				}
