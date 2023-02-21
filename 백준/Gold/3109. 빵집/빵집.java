@@ -23,9 +23,9 @@ public class Main {
 		visited = new boolean[r][c];
 
 		for (int i = 0; i < r; i++) {
-			String split[] = br.readLine().split("");
+			String input = br.readLine();
 			for (int j = 0; j < c; j++) {
-				map[i][j] = split[j].charAt(0);
+				map[i][j] = input.charAt(j);
 				if(map[i][j] == 'x') {
 					visited[i][j] = true;
 				}
