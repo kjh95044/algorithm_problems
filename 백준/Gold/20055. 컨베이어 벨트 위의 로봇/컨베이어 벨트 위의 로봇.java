@@ -32,10 +32,6 @@ public class Main {
 
     static Belt[] belts;
 
-//    static Belt beltCopy(Belt b){
-//        return new Belt(b.hasRobot, b.durability);
-//    }
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String[] input = br.readLine().split(" ");
@@ -62,6 +58,7 @@ public class Main {
             for (int i = 2*N-1; i > 0; i--) {
                 belts[i] = (belts[i-1]);
             }
+            // N-1일때 로봇을 내려줘야하는 조건이 있었는데 제데로 안 읽어서 놓쳐서 틀렸었다.
             belts[N-1].hasRobot = false;
             belts[0] = temp;
 //            System.out.println(Arrays.toString(belts));
@@ -71,20 +68,15 @@ public class Main {
             Belt now = belts[2*N-1];
             Belt target = belts[0];
             move(now, target);
-//            belts[2*N-1] = now;
-//            belts[0] = target;
 
             for (int i = 2*N-1; i > 0; i--) {
                 now = belts[i-1];
                 target = belts[i];
 //                System.out.println("before : " + belts[i]);
-                // 함수로 뺀다고 now 변수에 넣어놓고 now값만 바꾸고 배열에 업데이트를 안해줘서 논리 오류가 생겼다.
                 move(now, target);
-//                belts[i-1] = now;
-//                belts[i] = target;
-
 //                System.out.println("after : " + belts[i]);
             }
+            // N-1일때 로봇을 내려줘야하는 조건이 있었는데 제데로 안 읽어서 놓쳐서 틀렸었다.
             belts[N-1].hasRobot = false;
 
             // 3. 올리는 위치에 있는 칸의 내구도가 0이 아니면 로봇을 올린다.
