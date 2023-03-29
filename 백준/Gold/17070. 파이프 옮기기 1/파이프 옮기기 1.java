@@ -48,6 +48,7 @@ public class Main {
 			Pipe now = queue.poll();
 			if(now.x == N-1 && now.y == N-1) {
 				result++;
+				continue;
 			}
 			
 			int nx=now.x , ny=now.y;
