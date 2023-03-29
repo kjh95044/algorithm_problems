@@ -6,7 +6,7 @@ public class Main {
 	static StringBuilder sb = new StringBuilder();
 	static int N, result;
 	static int[][] map;
-	static final int 가로 = 1, 세로 = 2, 대각선 = 3;
+	static final int 가로 = 0, 세로 = 1, 대각선 = 2;
 
 	static class Pipe {
 		int type, x, y;
@@ -25,15 +25,16 @@ public class Main {
 
 		N = Integer.parseInt(br.readLine());
 
-		map = new int[N][N];
-		for (int i = 0; i < N; i++) {
+		map = new int[N+1][N+1];
+		for (int i = 1; i <= N; i++) {
 			StringTokenizer st = new StringTokenizer(br.readLine());
-			for (int j = 0; j < N; j++) {
+			for (int j = 1; j <= N; j++) {
 				map[i][j] = Integer.parseInt(st.nextToken());
 			}
 		}
 
-		bfs();
+//		bfs();
+		dp();
 
 		System.out.println(result);
 	}
@@ -90,22 +91,34 @@ public class Main {
 		}
 	}
 
-	private static void comb(int n, int k) {
-
-		int[][] B = new int[n + 1][k + 1];
-
-		for (int i = 0; i <= n; i++) {
-			int end = Math.min(i, k);
-			for (int j = 0; j <= end; j++) {
-				if (j == 0 || i == j)
-					B[i][j] = 1;
-				else
-					B[i][j] = B[i - 1][j - 1] + B[i - 1][j];
-
+	private static void dp() {
+		int[][][] D = new int[N+1][N+1][3];
+		D[1][2][가로] = 1;
+		
+		for(int i=1; i<=N; i++) {
+			for(int j=3; j<=N; j++) {
+				if(map[i][j] == 1) {
+					continue;
+				}
+				
+				// 현재 위치에 가로 파이프를 놓을수 있는 경우의 수는 
+				// 이전 파이프를 가로로 놓은 경우와 대각선으로 놓은 경우의 합이다.
+				D[i][j][가로] = D[i][j-1][가로] + D[i][j-1][대각선];
+				// 맨 윗줄의 경우는 가로 파이프만 놓을수 있다.
+				if(i==1) {
+					continue;
+				}
+				
+				D[i][j][세로] = D[i-1][j][세로] + D[i-1][j][대각선];
+				if(map[i-1][j] == 1 || map[i][j-1]==1) {
+					continue;
+				}
+				
+				D[i][j][대각선] = D[i-1][j-1][가로] + D[i-1][j-1][대각선] + D[i-1][j-1][세로];
 			}
-
+			
 		}
-		result = B[n][k];
+		result = D[N][N][가로] + D[N][N][세로] + D[N][N][대각선];
 	}
 
 }
