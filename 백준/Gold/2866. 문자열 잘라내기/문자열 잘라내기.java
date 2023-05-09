@@ -1,5 +1,3 @@
-package practice;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -7,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.StringTokenizer;
 
-public class 문자열잘라내기 {
+public class Main {
 
 	static int R, C, result;
 	static Set<String> set = new HashSet<>();
