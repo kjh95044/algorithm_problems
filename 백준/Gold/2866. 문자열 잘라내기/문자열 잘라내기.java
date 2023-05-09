@@ -1,3 +1,5 @@
+package practice;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -5,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.StringTokenizer;
 
-public class Main {
+public class 문자열잘라내기 {
 
 	static int R, C, result;
 	static Set<String> set = new HashSet<>();
@@ -23,9 +25,8 @@ public class Main {
 			strs[i] = in.readLine();
 		}
 
-		// hashSet을 써보자!
-		
-		// 처음 등록
+		// hashSet 사용
+		// 처음 set에 값 넣기
 
 		for (int i = 0; i < C; i++) {
 			StringBuilder temp = new StringBuilder();
@@ -47,9 +48,8 @@ public class Main {
 		int size = set.size();
 		
 		while(size!=0) {
-//			boolean flag = true;
 //			System.out.println(set);
-			Set<String> newSet = new HashSet<>();
+			Set<String> newSet = new HashSet<>(); // set에서 맨 앞글자 잘라서 넣을 임시 변수
 
 			for (String s : set) {
 				newSet.add(s.substring(1, s.length()));
@@ -57,40 +57,12 @@ public class Main {
 			
 //			System.out.println(newSet);
 			set = newSet;
-//			if(!flag) break;
 			if(set.size() == size) {
 				result ++;
 			}else {
 				break;
 			}
 		}
-		
-
-//		while (true) {
-//			boolean flag = true;
-//			if(start == R) break;
-//			for (int i = 0; i < C; i++) {
-//				StringBuilder temp = new StringBuilder();
-//				for (int j = start; j < R; j++) {
-//					temp.append(strs[j].charAt(i));
-//				}
-//
-//				if (map.containsKey(temp.toString())) {
-//					flag = false;
-//					break;
-//				} else {
-//					map.put(temp.toString(), 1);
-//				}
-//				
-//			}
-//
-//
-////			System.out.println(map);
-//			if(flag) result++;
-//			else break;
-//			start++;
-//			map.clear();
-//		}
 
 		System.out.println(result);
 	}
