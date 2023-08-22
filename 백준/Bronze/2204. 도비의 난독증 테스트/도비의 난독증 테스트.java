@@ -19,6 +19,13 @@ public class Main {
                 arr[i] = br.readLine();
             }
             if(arr.length!=0) {
+                // 기존 코드
+//                Arrays.sort(arr, new Comparator<String>() {
+//                    @Override
+//                    public int compare(String o1, String o2) {
+//                        return o1.toUpperCase().compareTo(o2.toUpperCase());
+//                    }
+//                });
                 Arrays.sort(arr, Comparator.comparing(String::toUpperCase));
 
                 sb.append(arr[0]).append("\n");
