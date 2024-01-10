@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Main {
@@ -32,7 +33,7 @@ public class Main {
 
         int N = Integer.parseInt(br.readLine());
 
-        List<Student> students = new ArrayList<>();
+        Student[] students = new Student[N];
 
         for(int i=0; i<N; i++){
             StringTokenizer st = new StringTokenizer(br.readLine());
@@ -43,13 +44,13 @@ public class Main {
                     Integer.parseInt(st.nextToken())
             );
 
-            students.add(student);
+            students[i] = student;
         }
 
-        Collections.sort(students);
+        Arrays.sort(students);
 
         for(int i=0; i<N; i++){
-            sb.append(students.get(i).name).append("\n");
+            sb.append(students[i].name).append("\n");
         }
 
         System.out.println(sb);
