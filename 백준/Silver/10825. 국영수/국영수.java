@@ -19,25 +19,10 @@ public class Main {
 
         @Override
         public int compareTo(Student student){
-            if(student.koreanScore > this.koreanScore){
-                return 1;
-            }else if(student.koreanScore == this.koreanScore){
-                if(student.englishScore < this.englishScore){
-                    return 1;
-                } else if (student.englishScore == this.englishScore) {
-                    if(student.mathScore > this.mathScore){
-                        return 1;
-                    } else if (student.mathScore == this.mathScore) {
-                        return this.name.compareTo(student.name);
-                    } else {
-                        return -1;
-                    }
-                } else {
-                    return -1;
-                }
-            }else {
-                return -1;
-            }
+            if(student.koreanScore != this.koreanScore) return student.koreanScore - this.koreanScore;
+            if(student.englishScore != this.englishScore) return this.englishScore - student.englishScore;
+            if(student.mathScore != this.mathScore) return student.mathScore - this.mathScore;
+            return this.name.compareTo(student.name);
         }
     }
 
@@ -51,7 +36,12 @@ public class Main {
 
         for(int i=0; i<N; i++){
             StringTokenizer st = new StringTokenizer(br.readLine());
-            Student student = new Student(st.nextToken(), Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()));
+            Student student = new Student(
+                    st.nextToken(),
+                    Integer.parseInt(st.nextToken()),
+                    Integer.parseInt(st.nextToken()),
+                    Integer.parseInt(st.nextToken())
+            );
 
             students.add(student);
         }
