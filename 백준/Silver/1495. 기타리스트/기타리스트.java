@@ -8,7 +8,7 @@ public class Main {
     static int[] arr, dp;
 
     public static void main(String[] args) throws IOException {
-        // 입력
+
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
@@ -18,23 +18,20 @@ public class Main {
         arr = new int[N];
         dp = new int[M + 1];
 
-        // 초기화
         for (int i = 0; i <= M; i++) {
             dp[i] = -1;
         }
 
-        // 배열 입력
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < N; i++) {
             arr[i] = Integer.parseInt(st.nextToken());
         }
 
-        // 풀이
         dp[S] = 0;
 
         for (int i = 0; i < N; i++) {
             int value = arr[i];
-            int[] nextDP = dp.clone(); // 현재 상태를 유지한 채로 다음 dp 배열을 생성
+            int[] nextDP = dp.clone();
 
             for (int j = 0; j <= M; j++) {
                 if (dp[j] == i) {
@@ -46,7 +43,7 @@ public class Main {
                 }
             }
 
-            dp = nextDP; // 다음 dp 배열로 업데이트
+            dp = nextDP;
         }
 
         // 최대값 찾기
