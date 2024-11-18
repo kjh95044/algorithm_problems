@@ -4,6 +4,8 @@ import java.io.*;
 public class Main {
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
+        StringBuilder sb = new StringBuilder();
+        
         int H = sc.nextInt();
         int W = sc.nextInt();
         int X = sc.nextInt();
@@ -41,9 +43,11 @@ public class Main {
 
         for(int i=0; i<H; i++){
             for(int j=0; j<W; j++){
-                System.out.print(arrA[i][j] + " ");
+                sb.append(arrA[i][j] + " ");
             }
-            System.out.println();
+            sb.append("\n");
         }
+        
+        System.out.println(sb);
     }
 }
